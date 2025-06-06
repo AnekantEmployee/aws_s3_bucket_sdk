@@ -13,7 +13,13 @@ load_dotenv()
 AWS_ACCESS_KEY = os.getenv("ACCESS_KEY")  # Fixed typo: was "ACEESS_KEY"
 AWS_SECRET_KEY = os.getenv("SECRET_ACCESS_KEY")  # Fixed typo: was "SECRET_ACESS_KEY"
 AWS_REGION = "ap-south-1"  # Or your preferred region
-BUCKET_NAME = "my-photos-manager01"  # Replace with your bucket name
+BUCKET_NAME = "my-photos-manager02"  # Replace with your bucket name
+
+
+print("ACCESS_KEY:", os.getenv("ACCESS_KEY"))
+print("SECRET_ACCESS_KEY:", os.getenv("SECRET_ACCESS_KEY"))
+print("Current working directory:", os.getcwd())
+print(AWS_ACCESS_KEY, AWS_SECRET_KEY, BUCKET_NAME, AWS_REGION)
 
 
 # Initialize session state
@@ -81,7 +87,9 @@ def render_image_grid(objects):
                                 image = display_image_preview(file_content)
                                 if image:
                                     st.image(
-                                        image, caption=obj["Key"], use_column_width=True
+                                        image,
+                                        caption=obj["Key"],
+                                        use_container_width=True,
                                     )
 
                                     # Image details

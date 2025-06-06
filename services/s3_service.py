@@ -23,6 +23,7 @@ class S3Manager:
             self.s3_client.list_buckets()
             return True
         except Exception as e:
+            print(e)
             raise ConnectionError(f"Failed to connect to AWS: {str(e)}")
 
     def list_buckets(self) -> List[str]:
@@ -31,6 +32,7 @@ class S3Manager:
             response = self.s3_client.list_buckets()
             return [bucket["Name"] for bucket in response["Buckets"]]
         except Exception as e:
+            print(e)
             raise Exception(f"Error listing buckets: {str(e)}")
 
     def list_objects(self, bucket_name: str, prefix: str = "") -> List[Dict]:
