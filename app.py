@@ -16,12 +16,6 @@ AWS_REGION = "ap-south-1"  # Or your preferred region
 BUCKET_NAME = "my-photos-manager02"  # Replace with your bucket name
 
 
-print("ACCESS_KEY:", os.getenv("ACCESS_KEY"))
-print("SECRET_ACCESS_KEY:", os.getenv("SECRET_ACCESS_KEY"))
-print("Current working directory:", os.getcwd())
-print(AWS_ACCESS_KEY, AWS_SECRET_KEY, BUCKET_NAME, AWS_REGION)
-
-
 # Initialize session state
 def initialize_session_state():
     if "s3_manager" not in st.session_state:
@@ -44,6 +38,7 @@ def is_image_file(filename):
 
 def display_image_preview(file_content, max_width=200):
     """Display image preview from file content"""
+    
     try:
         image = Image.open(io.BytesIO(file_content))
         # Resize image to fit within max_width while maintaining aspect ratio
